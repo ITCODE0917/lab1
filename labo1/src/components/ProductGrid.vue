@@ -10,7 +10,7 @@
       <div v-for="product in productsList" :key="product.id" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
         <div class="card product-card border-0 shadow-sm h-100 position-relative">
           <div class="position-relative">
-            <img :src="product.image" class="card-img-top" :alt="product.name" />
+            <img :src="`/lab1${product.image}`" class="card-img-top" :alt="product.name" />
             <!-- Badge -->
             <span v-if="product.sale" class="badge sale-badge">VENTE</span>
             <button class="btn btn-primary buy-btn">Ajouter au Panier</button>

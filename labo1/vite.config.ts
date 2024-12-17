@@ -8,6 +8,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/lab1/',
   plugins: [
     vue(),
     vueDevTools(),
@@ -25,8 +26,8 @@ export default defineConfig({
         "theme_color": "#ff0000",
         "background_color": "#ff0000",
         "display": "standalone",
-        "scope": "/",
-        "start_url": "/",
+        "scope": "/lab1/",
+        "start_url": "/lab1/",
         "name": "Application d'affichage de Produits",
         "short_name": "Liste de Produits",
         "description": "Labo1 affichage liste de produits utilisant bootstrap et vueJs",
