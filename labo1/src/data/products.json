@@ -1,0 +1,108 @@
+[
+  {
+    "id": 1,
+    "name": "Brand Lorem Ipsum bottle illustration",
+    "price": 20.0,
+    "oldPrice": null,
+    "rating": 5,
+    "sale": false,
+    "image": "/images/product1.png"
+  },
+  {
+    "id": 2,
+    "name": "Hair Products - Sebastian Professional Hair Products",
+    "price": 19.0,
+    "oldPrice": null,
+    "rating": 5,
+    "sale": false,
+    "image": "/images/product2.png"
+  },
+  {
+    "id": 3,
+    "name": "Cosmetics Make-up artist",
+    "price": 19.0,
+    "oldPrice": null,
+    "rating": 4,
+    "sale": false,
+    "image": "/images/product3.png"
+  },
+  {
+    "id": 4,
+    "name": "Cosmetics Lipstick Make-up artist",
+    "price": 20.0,
+    "oldPrice": 40.0,
+    "rating": 4,
+    "sale": true,
+    "image": "/images/product4.png"
+  },
+  {
+    "id": 5,
+    "name": "Manicured Nails with Nail Art",
+    "price": 29.0,
+    "oldPrice": null,
+    "rating": 4,
+    "sale": false,
+    "image": "/images/product5.png"
+  },
+  {
+    "id": 6,
+    "name": "Nail Polish Cosmetics",
+    "price": 39.0,
+    "oldPrice": null,
+    "rating": 3,
+    "sale": false,
+    "image": "/images/product6.png"
+  },
+  {
+    "id": 7,
+    "name": "Coco Mademoiselle Chanel No. 5 Perfume",
+    "price": 10.0,
+    "oldPrice": null,
+    "rating": 4,
+    "sale": false,
+    "image": "/images/product7.png"
+  },
+  {
+    "id": 8,
+    "name": "Lipstick Avon Products Cosmetics Lip gloss",
+    "price": 25.0,
+    "oldPrice": null,
+    "rating": 3,
+    "sale": false,
+    "image": "/images/product8.png"
+  },{
+    "id": 9,
+    "name": "Avon Products Perfume Eau de toilette",
+    "price": 10.0,
+    "oldPrice": null,
+    "rating": 4,
+    "sale": false,
+    "image": "/images/product9.png"
+  },
+  {
+    "id": 10,
+    "name": "Christian Dior Fahrenheit",
+    "price": 25.0,
+    "oldPrice": null,
+    "rating": 3,
+    "sale": false,
+    "image": "/images/product10.png"
+  },{
+    "id": 11,
+    "name": "pink lipstick",
+    "price": 10.0,
+    "oldPrice": null,
+    "rating": 4,
+    "sale": false,
+    "image": "/images/product11.png"
+  },
+  {
+    "id": 12,
+    "name": "Lipstick Yves Saint Laurent",
+    "price": 25.0,
+    "oldPrice": null,
+    "rating": 3,
+    "sale": false,
+    "image": "/images/product12.png"
+  }
+]

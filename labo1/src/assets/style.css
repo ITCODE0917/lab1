@@ -1,0 +1,138 @@
+/* Main Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #333;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.search-input {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 10px 15px;
+  width: 300px;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.search-input:focus {
+  border-color: #6f42c1;
+  box-shadow: 0 0 5px rgba(111, 66, 193, 0.5);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, fr));
+  gap: 10px;
+  padding: 0 10px;
+}
+
+.produits-header{
+  color: #6f42c1;
+
+}
+
+.product-card {
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-img-top {
+  height: 200px;
+  background-color: #f4f4f4;
+  background-blend-mode: overlay;
+  object-fit: contain;
+}
+
+.product-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin: 10px 0;
+}
+
+.price {
+  font-size: 14px;
+  font-weight: bold;
+  color: #6f42c1;
+}
+
+.sale-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  padding: 4px 6px;
+  border-radius: 3px;
+}
+
+.star-rating {
+  font-size: 15px;
+  color:  #D3D3D3;
+}
+
+.star-rating.filled {
+  font-size: 16px;
+  color: #6f42c1;
+}
+
+
+.buy-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  background-color: #6f42c1;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.buy-btn:hover {
+  background-color: #5a3790;
+}
+
+.product-card:hover .buy-btn {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .search-input {
+    width: 80%;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
