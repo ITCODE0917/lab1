@@ -17,4 +17,54 @@ if ('serviceWorker' in navigator) {
         });
     });
   }
+
+
+let deferredPrompt: BeforeInstallPromptEvent | null = null;
+
+  window.addEventListener('beforeinstallprompt', (event: Event) => {
+    event.preventDefault();
+
+    deferredPrompt = event as BeforeInstallPromptEvent;
+  
+    const installButton = document.getElementById('install-btn') as HTMLButtonElement | null;
+    if (installButton) {
+      installButton.style.display = 'block';
+      installButton.addEventListener('click', () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then((choiceResult: UserChoiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+              console.log('L’utilisateur a accepté d’installer l’application.');
+            } else {
+              console.log('L’utilisateur a refusé d’installer l’application.');
+            }
+            deferredPrompt = null; 
+          });
+        }
+      });
+    }
+  });
+  
+  // Masquer le bouton après l'installation réussie
+  window.addEventListener('appinstalled', () => {
+    console.log('L’application a été installée.');
+    const installButton = document.getElementById('install-btn') as HTMLButtonElement | null;
+    if (installButton) {
+      installButton.style.display = 'none'; // Masquer le bouton
+    }
+  });
+  
+  
+  interface UserChoiceResult {
+    outcome: 'accepted' | 'dismissed';
+    platform: string;
+  }
+
+  interface BeforeInstallPromptEvent extends Event {
+    prompt: () => Promise<void>;
+    userChoice: Promise<{ outcome: 'accepted' | 'dismissed'; platform: string }>;
+  }
+  
+  
+
   
