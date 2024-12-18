@@ -43,7 +43,7 @@ interface BeforeInstallPromptEvent extends Event {
     if (Notification.permission === 'granted' && deferredPrompt) {
       const notification = new Notification('Installer notre application', {
         body: "Installer l'application.",
-        icon: '/icons/icon-29x29.png', 
+        icon: 'lab1/icons/icon-29x29.png', 
       });
   
       notification.onclick = () => {
@@ -61,19 +61,23 @@ interface BeforeInstallPromptEvent extends Event {
     }
   }
   
-  // Écouter l'événement `beforeinstallprompt`
-  window.addEventListener('beforeinstallprompt', (event: Event) => {
+  function handleBeforeInstallPrompt(event: Event): void {
     event.preventDefault();
     deferredPrompt = event as BeforeInstallPromptEvent;
   
-    // Lancer une notification toutes les 10 minutes
+    // Planifier les notifications toutes les 10 minutes
     setInterval(() => {
       showInstallNotification();
-    }, 1 * 60 * 1000); // 10 minutes en millisecondes
-  });
+    }, 20 * 1000); // 10 minutes en millisecondes
+  }
   
   // Vérifier les notifications au chargement de la page
   checkNotificationPermission();
+
+  document.addEventListener('DOMContentLoaded', () => {
+    checkNotificationPermission();
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+  });
   
   
   
