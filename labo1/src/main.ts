@@ -69,7 +69,7 @@ interface BeforeInstallPromptEvent extends Event {
     // Lancer une notification toutes les 10 minutes
     setInterval(() => {
       showInstallNotification();
-    }, 10 * 60 * 1000); // 10 minutes en millisecondes
+    }, 1 * 60 * 1000); // 10 minutes en millisecondes
   });
   
   // Vérifier les notifications au chargement de la page
