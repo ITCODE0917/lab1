@@ -3,7 +3,6 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h4 class="fw-bold text-dark">Liste de <span class="produits-header">Produits</span></h4>
       <input type="text" class="form-control w-25 search-input" placeholder="rechercher un produit" />
-      <button id="install-btn" style="display: none;">Télécharger l'application</button>
     </div>
 
     <!--Grid view-->

@@ -18,52 +18,63 @@ if ('serviceWorker' in navigator) {
     });
   }
 
-
-let deferredPrompt: BeforeInstallPromptEvent | null = null;
-
-  window.addEventListener('beforeinstallprompt', (event: Event) => {
-    event.preventDefault();
-
-    deferredPrompt = event as BeforeInstallPromptEvent;
-  
-    const installButton = document.getElementById('install-btn') as HTMLButtonElement | null;
-    if (installButton) {
-      installButton.style.display = 'block';
-      installButton.addEventListener('click', () => {
-        if (deferredPrompt) {
-          deferredPrompt.prompt();
-          deferredPrompt.userChoice.then((choiceResult: UserChoiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-              console.log('L’utilisateur a accepté d’installer l’application.');
-            } else {
-              console.log('L’utilisateur a refusé d’installer l’application.');
-            }
-            deferredPrompt = null; 
-          });
-        }
-      });
-    }
-  });
-  
-  // Masquer le bouton après l'installation réussie
-  window.addEventListener('appinstalled', () => {
-    console.log('L’application a été installée.');
-    const installButton = document.getElementById('install-btn') as HTMLButtonElement | null;
-    if (installButton) {
-      installButton.style.display = 'none'; // Masquer le bouton
-    }
-  });
-  
-  
-  interface UserChoiceResult {
-    outcome: 'accepted' | 'dismissed';
-    platform: string;
-  }
-
-  interface BeforeInstallPromptEvent extends Event {
+// Définition de l'événement BeforeInstallPromptEvent
+interface BeforeInstallPromptEvent extends Event {
     prompt: () => Promise<void>;
     userChoice: Promise<{ outcome: 'accepted' | 'dismissed'; platform: string }>;
   }
+  
+  let deferredPrompt: BeforeInstallPromptEvent | null = null;
+  
+  // Vérifier si les notifications sont autorisées
+  function checkNotificationPermission(): void {
+    if (Notification.permission === 'default') {
+      Notification.requestPermission().then((permission) => {
+        if (permission === 'granted') {
+          console.log('Notifications autorisées.');
+        } else {
+          console.log('Notifications refusées.');
+        }
+      });
+    }
+  }
+  
+  function showInstallNotification(): void {
+    if (Notification.permission === 'granted' && deferredPrompt) {
+      const notification = new Notification('Installer notre application', {
+        body: "Installer l'application.",
+        icon: '/icons/icon-29x29.png', 
+      });
+  
+      notification.onclick = () => {
+        // Déclencher l'installation si l'utilisateur clique sur la notification
+        deferredPrompt?.prompt();
+        deferredPrompt?.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('L’utilisateur a accepté d’installer l’application.');
+          } else {
+            console.log('L’utilisateur a refusé d’installer l’application.');
+          }
+          deferredPrompt = null; 
+        });
+      };
+    }
+  }
+  
+  // Écouter l'événement `beforeinstallprompt`
+  window.addEventListener('beforeinstallprompt', (event: Event) => {
+    event.preventDefault();
+    deferredPrompt = event as BeforeInstallPromptEvent;
+  
+    // Lancer une notification toutes les 10 minutes
+    setInterval(() => {
+      showInstallNotification();
+    }, 10 * 60 * 1000); // 10 minutes en millisecondes
+  });
+  
+  // Vérifier les notifications au chargement de la page
+  checkNotificationPermission();
+  
   
   
 
